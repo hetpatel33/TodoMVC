@@ -31,6 +31,11 @@
     display: block;
     text-align: center;
     transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.activate-all:hover:before {
+    color: #000;
 }
 
 .todo-list {
@@ -136,6 +141,11 @@
     content: '×';
 }
 
+.remove-button:hover:after {
+    content: '×';
+    color: #331515;
+}
+
 .todo-item:hover .remove-button {
     opacity: 1;
 }
@@ -184,8 +194,12 @@
     float: right;
     cursor: pointer;
     position: relative;
-    margin: 0;
+    margin: 0 3px;
     padding: 4px 9px;
     border: 1px solid transparent;
     border-radius: 3px;
 }
+
+.clear-btn:hover {
+        border-color: #EAD7D7;
+    }

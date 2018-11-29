@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './styles.css'
 
-export default class TodoItem extends Component {
+const TodoItem = ({todo, onToggle, onRemove}) => {
 
-render() {
-    let todo = this.props.todo;
     return (
         <li className={ todo.completed ? 'todo-item todo-completed' : 'todo-item' }>
             <label className="todo-label">
@@ -12,11 +10,12 @@ render() {
                 <input type="checkbox"
                     checked={ todo.completed } 
                     value={ todo.id } 
-                    onChange={ this.props.handleToggle } />
+                    onChange={ onToggle } />
                 <span className="checkmark"></span></label>
                 <button className="remove-button fr"
-                  onClick={() => this.props.handleRemoveTodo(todo.id)} />
+                  onClick={() => onRemove(todo.id)} />
         </li>
     );
 }
-}
+
+export default TodoItem;
