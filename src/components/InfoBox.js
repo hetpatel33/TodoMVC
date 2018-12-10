@@ -1,20 +1,27 @@
 import React from 'react'
-import Actions from '.././constants/actions';
+import Filters from '../constants/filters';
 import './styles.css';
 
-const InfoBox = ({activeState, onFilterUpdate, onClearcompleted, getRemainingCount, showClearCompleted}) => {
+const InfoBox = ({activeFilter, onFilterUpdate, onClearcompleted, remainingTodoCount, showClearCompleted}) => {
+    const todoFilters = Filters.map((filter) => {
+        return (
+            <li key={filter.id}>
+                <button 
+                className={ activeFilter === filter.id ? "todo-btn todo-active" : "todo-btn"}
+                onClick={ () => onFilterUpdate(filter.id) }>
+                    {filter.text}
+                </button>
+            </li>
+        );
+    });
+
     return (
         <footer className="infoBox">
-            <span className="fl">{ getRemainingCount() } items left </span>
+            <span className="fl">{ remainingTodoCount } items left </span>
             <ul className="filter-btns">
-                <li><button className={ activeState === Actions.ALL_TODO ? "todo-btn todo-active" : "todo-btn"}
-                            onClick={ () => onFilterUpdate(Actions.ALL_TODO) }>All</button></li>
-                <li><button className={ activeState === Actions.ACTIVE_TODO ? "todo-btn todo-active" : "todo-btn"} 
-                            onClick={ () => onFilterUpdate(Actions.ACTIVE_TODO) }>Active</button></li>
-                <li><button className={ activeState === Actions.COMPLETE_TODO ? "todo-btn todo-active" : "todo-btn"}
-                            onClick={ () => onFilterUpdate(Actions.COMPLETE_TODO) }>Completed</button></li>
+                {todoFilters}
             </ul>
-            {showClearCompleted() &&
+            {showClearCompleted &&
                 <button className="clear-btn" onClick={ onClearcompleted }>Clear completed</button>
             }
         </footer>

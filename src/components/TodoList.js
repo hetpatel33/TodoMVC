@@ -1,51 +1,35 @@
-import React from 'react'
+import React, {PureComponent} from 'react'
 import TodoItem from './TodoItem'
 import './styles.css';
-import Actions from '../constants/actions';
+import helperFunctions from '../constants/helperFunctions';
 
-const TodoList = ({todos, activeState, onStateUpdate}) => {
+export default class TodoList extends PureComponent {
 
-    const handleToggle = function(ev) {
+    handleToggle = (ev) => {
         const id = ev.target.value;
-        const updatedTodos = todos.map(
-          todo =>
-            todo.id === id ? { ...todo, completed: !todo.completed } : todo
-        )
-        onStateUpdate(updatedTodos);
+        const updatedTodos = helperFunctions.toggleTodo(this.props.todos, id);
+        this.props.onStateUpdate(updatedTodos);
     }
 
-    const handleRemove = function(id) {
-        const updatedTodos = todos.filter(todo => todo.id !== id)
-        onStateUpdate(updatedTodos);
+    handleRemove = (id) => {
+        const updatedTodos = helperFunctions.removeTodo(this.props.todos, id);
+        this.props.onStateUpdate(updatedTodos);
     }
 
-    let filteredTodos;
-    switch(activeState) {
-        case Actions.ACTIVE_TODO:
-            filteredTodos = todos.filter(todo => !todo.completed)
-            break;
-        case Actions.COMPLETE_TODO:
-            filteredTodos = todos.filter(todo => todo.completed)
-            break;
-        default:
-            filteredTodos = todos;
-            break;
-    }
+    render() {
+        const todoItems = this.props.todos.map((todo) => {
+            return (
+                <TodoItem key={ todo.id }
+                          todo={ todo } 
+                          onToggle={ this.handleToggle } 
+                          onRemove={ this.handleRemove } />
+            );
+        });
 
-    const todoItems = filteredTodos.map((todo) => {
         return (
-            <TodoItem key={ todo.id }
-                      todo={ todo } 
-                      onToggle={ handleToggle } 
-                      onRemove={ handleRemove } />
-        );
-    });
-
-    return (
-        <ul className="todo-list">
-            { todoItems }
-        </ul>
-    );
-};
-
-export default TodoList;
+            <ul className="todo-list">
+                { todoItems }
+            </ul>
+        );  
+    }
+}

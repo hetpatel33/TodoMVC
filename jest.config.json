@@ -1,0 +1,6 @@
+{
+    "testMatch": ["**/?(*.)spec.js?(x)"],
+    "transform": {
+      "^.+\\.js$": "./node_modules/babel-jest"
+    }
+}
