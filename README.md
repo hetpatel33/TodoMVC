@@ -1,4 +1,5 @@
 ## Demo : https://hetpatel33.github.io/TodoMVC/
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -44,3 +45,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars0.githubusercontent.com/u/13877514?v=4" width="100px;" alt="Het Patel"/><br /><sub><b>Het Patel</b></sub>](http://hetpatel33.github.io)<br />[🚇](#infra-hetpatel33 "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/hetpatel33/TodoMVC/commits?author=hetpatel33 "Tests") [💻](https://github.com/hetpatel33/TodoMVC/commits?author=hetpatel33 "Code") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
